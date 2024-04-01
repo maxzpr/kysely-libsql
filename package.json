@@ -1,24 +1,23 @@
 {
-  "name": "@libsql/kysely-libsql",
-  "version": "0.3.1-pre",
+  "name": "@libsql/kysely-libsql-client",
+  "version": "0.0.1",
   "keywords": [
-    "hrana",
     "libsql",
-    "sqld",
+    "turso",
     "database",
+    "sqlite",
     "kysely"
   ],
   "description": "Kysely dialect for libSQL",
   "repository": {
     "type": "git",
-    "url": "github:libsql/kysely-libsql"
+    "url": "github:maxzpr/kysely-libsql"
   },
-  "homepage": "https://github.com/libsql/kysely-libsql",
+  "homepage": "https://github.com/maxzpr/kysely-libsql",
   "authors": [
-    "Jan Špaček <honza@chiselstrike.com>"
+    "Maxzpr"
   ],
   "license": "MIT",
-
   "type": "module",
   "main": "lib-cjs/index.js",
   "types": "lib-esm/index.d.ts",
@@ -33,7 +32,6 @@
     "lib-cjs/**",
     "lib-esm/**"
   ],
-
   "scripts": {
     "prepublishOnly": "npm run build",
     "prebuild": "rm -rf ./lib-cjs ./lib-esm",
@@ -43,9 +41,8 @@
     "postbuild": "cp package-cjs.json ./lib-cjs/package.json",
     "test": "jest --runInBand"
   },
-
   "dependencies": {
-    "@libsql/hrana-client": "^0.4.0"
+    "@libsql/client": "^0.6.0"
   },
   "peerDependencies": {
     "kysely": "*"
