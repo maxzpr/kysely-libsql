@@ -2,7 +2,7 @@
 
 Forked from [Libsql/kysely-libsql][libsql]
 
-A [Kysely][kysely] using the [@maxzpr/client][libsql-client-ts] from Turso official sdk.
+A [Kysely][kysely] using the [@libsql/client][libsql-client-ts] from Turso official sdk.
 
 [libsql]: https://github.com/libsql/kysely-libsql
 [kysely]: https://github.com/koskimas/kysely
@@ -42,7 +42,7 @@ const db = new Kysely<Database>({
 
 ## Supported URLs
 
-The library accepts the [same URL schemas][supported-urls] as [`@maxzpr/client`][libsql-client-ts] except `file:`:
+The library accepts the [same URL schemas][supported-urls] as [`@libsql/client`][libsql-client-ts] except `file:`:
 
 - `http://` and `https://` connect to a libsql server over HTTP,
 - `ws://` and `wss://` connect to the server over WebSockets,
