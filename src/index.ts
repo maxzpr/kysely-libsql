@@ -72,11 +72,15 @@ export class LibSqlDriver implements kysely.Driver {
   }
 
   async releaseConnection(connection: LibSqlConnection): Promise<void> {
-    connection.client.close();
+    if (connection.client.protocol !== "http") {
+      connection.client.close();
+    }
   }
 
   async destroy(): Promise<void> {
-    this.client.close();
+    if (!this.client.closed) {
+      this.client.close();
+    }
   }
 }
 
