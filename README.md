@@ -2,7 +2,7 @@
 
 Forked from [Libsql/kysely-libsql][libsql]
 
-A [Kysely][kysely] using the [@libsql/client][libsql-client-ts] from Turso official sdk.
+A [Kysely][kysely] using the [@maxzpr/client][libsql-client-ts] from Turso official sdk.
 
 [libsql]: https://github.com/libsql/kysely-libsql
 [kysely]: https://github.com/koskimas/kysely
@@ -10,7 +10,7 @@ A [Kysely][kysely] using the [@libsql/client][libsql-client-ts] from Turso offic
 ## Installation
 
 ```shell
-npm install @libsql/kysely-libsql-client
+npm install @maxzpr/kysely-libsql-client
 ```
 
 ## Usage
@@ -19,7 +19,7 @@ Pass a `LibsqlDialect` instance as the `dialect` when creating the `Kysely` obje
 
 ```typescript
 import { Kysely } from "kysely";
-import { LibsqlDialect } from "@libsql/kysely-libsql-client";
+import { LibsqlDialect } from "@maxzpr/kysely-libsql-client";
 
 interface Database {
     ...
@@ -42,7 +42,7 @@ const db = new Kysely<Database>({
 
 ## Supported URLs
 
-The library accepts the [same URL schemas][supported-urls] as [`@libsql/client`][libsql-client-ts] except `file:`:
+The library accepts the [same URL schemas][supported-urls] as [`@maxzpr/client`][libsql-client-ts] except `file:`:
 
 - `http://` and `https://` connect to a libsql server over HTTP,
 - `ws://` and `wss://` connect to the server over WebSockets,
@@ -59,4 +59,4 @@ This project is licensed under the MIT license.
 
 ### Contribution
 
-Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in `@libsql/kysely-libsql-client` by you, shall be licensed as MIT, without any additional terms or conditions.
+Unless you explicitly state otherwise, any contribution intentionally submitted for inclusion in `@maxzpr/kysely-libsql-client` by you, shall be licensed as MIT, without any additional terms or conditions.

@@ -1,5 +1,5 @@
 import { Kysely, Generated } from "kysely";
-import { LibsqlDialect } from "@libsql/kysely-libsql-client";
+import { LibsqlDialect } from "@maxzpr/kysely-libsql-client";
 
 interface Database {
   book: BookTable,

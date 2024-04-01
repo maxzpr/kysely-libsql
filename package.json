@@ -1,5 +1,5 @@
 {
-  "name": "@libsql/kysely-libsql-client",
+  "name": "@maxzpr/kysely-libsql-client",
   "version": "0.0.1",
   "keywords": [
     "libsql",
@@ -11,9 +11,9 @@
   "description": "Kysely dialect for libSQL",
   "repository": {
     "type": "git",
-    "url": "github:maxzpr/kysely-libsql"
+    "url": "git+https://github.com/maxzpr/kysely-libsql-client.git"
   },
-  "homepage": "https://github.com/maxzpr/kysely-libsql",
+  "homepage": "https://github.com/maxzpr/kysely-libsql-client",
   "authors": [
     "Maxzpr"
   ],
