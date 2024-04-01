@@ -20,18 +20,15 @@ export class LibsqlDialect implements kysely.Dialect {
 
   createDriver(): kysely.Driver {
     let client: Client;
-    let closeClient: boolean;
     if (this.config.client !== undefined) {
       client = this.config.client;
-      closeClient = false;
     } else if (this.config.url !== undefined) {
       client = createClient({ url: this.config.url, authToken: this.config?.authToken });
-      closeClient = true;
     } else {
       throw new Error("Please specify either `client` or `url` in the LibsqlDialect config");
     }
 
-    return new LibSqlDriver(client, closeClient);
+    return new LibSqlDriver(client);
   }
 
   createIntrospector(db: kysely.Kysely<any>): kysely.DatabaseIntrospector {
@@ -45,12 +42,10 @@ export class LibsqlDialect implements kysely.Dialect {
 
 export class LibSqlDriver implements kysely.Driver {
   client: Client;
-  closeClient: boolean;
   transaction: Transaction | null = null;
 
-  constructor(_client: Client, _closeClient: boolean) {
+  constructor(_client: Client) {
     this.client = _client;
-    this.closeClient = _closeClient;
   }
 
   async init(): Promise<void> {
@@ -66,16 +61,13 @@ export class LibSqlDriver implements kysely.Driver {
     _settings: kysely.TransactionSettings,
   ): Promise<void> {
     this.transaction = await connection.client.transaction("write");
-    // await connection.client.execute("BEGIN IMMEDIATE");
   }
 
   async commitTransaction(connection: LibSqlConnection): Promise<void> {
-    // await connection.client.execute("COMMIT");
     await this.transaction?.commit();
   }
 
   async rollbackTransaction(connection: LibSqlConnection): Promise<void> {
-    // await connection.client.execute("ROLLBACK");
     await this.transaction?.rollback();
   }
 
@@ -84,9 +76,7 @@ export class LibSqlDriver implements kysely.Driver {
   }
 
   async destroy(): Promise<void> {
-    if (this.closeClient) {
-      this.client.close();
-    }
+    this.client.close();
   }
 }
 
